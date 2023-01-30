@@ -1,5 +1,13 @@
 # Homework 11 - Docker. Setup Kubernetes
 
+t
+
+<img width="1236" alt="Screenshot 2023-01-30 at 12 21 34" src="https://user-images.githubusercontent.com/117667360/215450915-da624009-bf2b-4bca-a87c-2226644ec567.png">
+
+First of all I Added a New User "kubeuser" to the System and Added him to the sudo Group.
+
+
+
 ### To verify that the installation was successful, we run the command below. If all the pods are in RUNNING or COMPLETED mode then the deployment was successful:
 
 <img width="1260" alt="Screenshot 2023-01-28 at 22 51 59" src="https://user-images.githubusercontent.com/117667360/215290620-6c4227df-dce1-4ba1-87ee-dfaf9a17a06e.png">
