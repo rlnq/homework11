@@ -6,4 +6,6 @@
 
 ### Get a list of all Nodes in Kubernetes:
 
-<img width="1260" alt="Screenshot 2023-01-28 at 22 52 24" src="https://user-images.githubusercontent.com/117667360/215290621-50f1f5c1-8138-473e-a21c-069d74da43f8.png">
+
+<img width="1231" alt="Screenshot 2023-01-30 at 12 18 37" src="https://user-images.githubusercontent.com/117667360/215450162-c6621371-5f1b-4f7f-b8da-74cf5c43d0c1.png">
+
