@@ -15,8 +15,6 @@ Requirements:
 
 <img width="1236" alt="Screenshot 2023-01-30 at 12 21 34" src="https://user-images.githubusercontent.com/117667360/215450915-da624009-bf2b-4bca-a87c-2226644ec567.png">
 
-
-
 #### First of all I added a new user "kubeuser" to the system and added him to the sudo group.
 
 ## Part 2 - Setup Kubernetes
@@ -92,30 +90,65 @@ net.ipv4.ip_forward = 1
 ```
 ![image](https://user-images.githubusercontent.com/117667360/216338378-79ec0c19-b6fa-43bb-8f71-7025db157166.png)
 
-Save and close the file. Reload sysctl with:
-
+* Save and close the file. Reload sysctl with:
+```
 sudo sysctl --system
+```
+### Install containerd
 
-Install containerd
-
-Install the necessary dependencies with:
-
+* Install the necessary dependencies with:
+```
 sudo apt install curl gnupg2 software-properties-common apt-transport-https ca-certificates -y
-
-Add the GPG key with:
-
+```
+* Add the GPG key with:
+```
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-
-Add the required repository with:
-
+```
+* Add the required repository with:
+```
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-
-Install containerd with the commands:
-
+```
+* Install containerd with the commands:
+```
 sudo apt update
 sudo apt install containerd.io -y
+```
+* Change to the root user with:
+```
+sudo su
+```
+* Create a new directory for containerd with:
+```
+mkdir -p /etc/containerd
+```
+* Generate the configuration file with:
+```
+containerd config default>/etc/containerd/config.toml
+```
+* Exit from the root user with:
+```
+exit
+```
+* Restart containerd with the command:
+```
+sudo systemctl restart containerd
+```
+* Enable containerd to run at startup with:
+```
+sudo systemctl enable containerd
+```
+### Initialize the Master Node
 
+* Pull down the necessary container images with:
+```
+sudo kubeadm config images pull
+```
+## Command only for kubemaster :
 
+* Now, using the kubemaster IP address initialize the master node with:
+```
+sudo kubeadm init --pod-network-cidr=192.168.0.0/16
+```
 
 
 
