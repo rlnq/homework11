@@ -24,15 +24,17 @@ Requirements:
 * Run commands in two VMs (kubemaster and kubenode)
 ```
 sudo apt update
+```
+```
 sudo apt upgrade -y
 ```
 
 * Edit the hosts file with the command:
 ```
 sudo nano /etc/hosts
-
-Put your private IP address and hostname
 ```
+* Put your private IP address and hostname
+
 ![image](https://user-images.githubusercontent.com/117667360/216337564-b9cc4d83-9059-42ca-abdc-60512b6f38af.png)
 
 * Save and exit
@@ -76,6 +78,8 @@ sudo swapoff -a
 * Enable Kernel Modules and Change Settings in sysctl:
 ```
 sudo modprobe overlay
+```
+```
 sudo modprobe br_netfilter
 ```
 * Change the sysctl settings by opening the necessary file with the command:
@@ -111,6 +115,8 @@ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubun
 * Install containerd with the commands:
 ```
 sudo apt update
+```
+```
 sudo apt install containerd.io -y
 ```
 * Change to the root user with:
@@ -152,7 +158,11 @@ sudo kubeadm init --pod-network-cidr=192.168.0.0/16
 * Finally, you need to create a new directory to house a configuration file and give it the proper permissions which is done with the following commands:
 ```
 mkdir -p $HOME/.kube
+```
+```
 sudo cp -f /etc/kubernetes/admin.conf $HOME/.kube/config
+```
+```
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```
 * List Kubernetes Nodes:
@@ -164,9 +174,11 @@ kubectl get nodes
 * Connect kubenode to kubemaster
 ```
 sudo su
-
+```
+```
 kubeadm join 10.132.0.9:6443 --token ut36yh.qd0aeqwaciay05l6         --discovery-token-ca-cert-hash sha256:111111111111111111111
 ```
+
 (copy from kubemaster output)
 
 ## Comeback to kubemaster :
@@ -174,9 +186,11 @@ kubeadm join 10.132.0.9:6443 --token ut36yh.qd0aeqwaciay05l6         --discovery
 * Install network:
 ```
 kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.25.0/manifests/tigera-operator.yaml
-
+```
+```
 curl https://raw.githubusercontent.com/projectcalico/calico/v3.25.0/manifests/custom-resources.yaml -O
-
+```
+```
 kubectl create -f custom-resources.yaml
 ```
 ## Result:
