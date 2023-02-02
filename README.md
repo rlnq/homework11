@@ -149,8 +149,36 @@ sudo kubeadm config images pull
 ```
 sudo kubeadm init --pod-network-cidr=192.168.0.0/16
 ```
+* Finally, you need to create a new directory to house a configuration file and give it the proper permissions which is done with the following commands:
+```
+mkdir -p $HOME/.kube
+sudo cp -f /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+```
+* List Kubernetes Nodes:
+```
+kubectl get nodes
+```
+## Command only for kubenode :
 
+* Connect kubenode to kubemaster
+```
+sudo su
 
+kubeadm join 10.132.0.9:6443 --token ut36yh.qd0aeqwaciay05l6         --discovery-token-ca-cert-hash sha256:111111111111111111111
+```
+(copy from kubemaster output)
+
+## Comeback to kubemaster :
+
+* Install network:
+```
+kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.25.0/manifests/tigera-operator.yaml
+
+curl https://raw.githubusercontent.com/projectcalico/calico/v3.25.0/manifests/custom-resources.yaml -O
+
+kubectl create -f custom-resources.yaml
+```
 
 #### To verify that the installation was successful, we run the command below. If all the pods are in RUNNING or COMPLETED mode then the deployment was successful:
 
