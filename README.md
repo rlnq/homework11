@@ -155,6 +155,8 @@ sudo kubeadm config images pull
 ```
 sudo kubeadm init --pod-network-cidr=192.168.0.0/16
 ```
+* Copy output for next step!
+
 * Finally, you need to create a new directory to house a configuration file and give it the proper permissions which is done with the following commands:
 ```
 mkdir -p $HOME/.kube
@@ -175,12 +177,10 @@ kubectl get nodes
 ```
 sudo su
 ```
+* #### Copy from kubemaster output and insert to kubenode:
 ```
 kubeadm join 10.132.0.9:6443 --token ut36yh.qd0aeqwaciay05l6         --discovery-token-ca-cert-hash sha256:111111111111111111111
 ```
-
-(copy from kubemaster output)
-
 ## Comeback to kubemaster :
 
 * Install network:
