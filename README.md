@@ -1,12 +1,33 @@
 # Homework 11 - Docker. Setup Kubernetes
 
-#### I created a Kubernetes cluster in digitalocean with the following settings:
+## Task - Setup Kubernetes
+
+Prepare 2 VMs (kubemaster and kubenode) with the same parametrs
+
+Requirements:
+* 4 CPU
+* 8 GB RAM
+* Ubuntu (only for this task)
+ 
+## Part 1 - prepare 2 VMs
+
+#### I created a 2 VMs in digitalocean with the following settings:
 
 <img width="1236" alt="Screenshot 2023-01-30 at 12 21 34" src="https://user-images.githubusercontent.com/117667360/215450915-da624009-bf2b-4bca-a87c-2226644ec567.png">
 
+
+
 #### First of all I added a new user "kubeuser" to the system and added him to the sudo group.
 
-## The installation and setup process was not difficult if you followed the instructions, so the following screens will show the final result.
+## Part 2 - Setup Kubernetes
+
+### Steps:
+
+
+
+
+
+
 
 #### To verify that the installation was successful, we run the command below. If all the pods are in RUNNING or COMPLETED mode then the deployment was successful:
 
